@@ -33,7 +33,7 @@ jobs:
       uses: aws-actions/configure-aws-credentials@v4
       with:
         role-to-assume: arn:aws:iam::527557824388:role/GitubActions-S3_role
-        aws-region: ${{ env:AWS_REGION }}
+        aws-region: ${{ env.AWS_REGION }}
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v4
