@@ -13,7 +13,6 @@ permissions:
 
 jobs:
   terraform:
-    terraform:
     name: "Terraform Action"
     runs-on: ubuntu-latest
     env:
