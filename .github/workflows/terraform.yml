@@ -34,6 +34,11 @@ jobs:
         echo "Ref: $GITHUB_REF"
         echo "Workflow: $GITHUB_WORKFLOW"
 
+    - name: Debug OIDC Claims
+      uses: github/actions-oidc-debugger@main
+      with:
+        audience: sts.amazonaws.com
+
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v4
