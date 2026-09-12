@@ -8,7 +8,8 @@ terraform {
     use_lockfile = true
   }
 
-  module "vpc" {
-  source = "./terraform/modules/vpc"
 }
+
+module "vpc" {
+  source = "./terraform/modules/vpc"
 }
