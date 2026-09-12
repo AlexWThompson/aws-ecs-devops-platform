@@ -52,10 +52,6 @@ jobs:
       with:
         role-to-assume: arn:aws:iam::527557824388:role/GitubActions-S3_role
         aws-region: ${{ env.AWS_REGION }}
-        role-session-name: GitHubActions
-        retry-max-attempts: 1
-        action-timeout-s: 30
-        mask-aws-account-id: false
 
     - name: Verify AWS Identity
       run: aws sts get-caller-identity
@@ -67,7 +63,7 @@ jobs:
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: terraform init
+      run: terraform init -reconfigure
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
