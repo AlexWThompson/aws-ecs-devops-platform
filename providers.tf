@@ -11,5 +11,5 @@ terraform {
 
 provider "aws" {
   version = "~>6.64.0"
-  region  = "east-us-2"
+  region  = "us-east-2"
 }
