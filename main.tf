@@ -7,4 +7,8 @@ terraform {
     region       = "us-east-2"
     use_lockfile = true
   }
+
+  module "vpc" {
+  source = "./terraform/modules/vpc"
+}
 }
