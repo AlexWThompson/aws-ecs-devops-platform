@@ -25,18 +25,13 @@ module "ecs_service" {
   name        = "aws-devops-ecs-service"
   cluster_arn = module.ecs_cluster.arn
 
+  launch_type = "FARGATE"
+
   cpu    = 256
   memory = 512
 
   task_exec_iam_role_arn = var.ecs_task_execution_role_arn
   tasks_iam_role_arn     = var.ecs_task_role_arn
-
-  capacity_provider_strategy = {
-    FARGATE = {
-      weight = 1
-      base   = 1
-    }
-  }
 
   container_definitions = {
     dashboard = {
