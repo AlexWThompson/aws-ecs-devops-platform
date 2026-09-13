@@ -3,7 +3,7 @@ module "ecr" {
 
   repository_name = "aws-devops-ecs-repo"
 
-  repository_read_write_access_arns = [arn:aws:iam::527557824388:role/GitubActions-S3_role]
+  repository_read_write_access_arns = ["arn:aws:iam::527557824388:role/GitubActions-S3_role"]
   repository_lifecycle_policy = jsonencode({
     rules = [
       {
