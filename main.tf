@@ -13,3 +13,19 @@ terraform {
 module "vpc" {
   source = "./terraform/modules/vpc"
 }
+
+module "iam" {
+  source = "./terraform/modules/iam"
+}
+
+module "ecr" {
+  source = "./terraform/modules/ecr"
+}
+
+module "ecs" {
+  source = "./terraform/modules/ecs"
+
+  ecs_task_execution_role_arn = module.iam.ecs_task_execution_role_arn
+  ecs_task_role_arn           = module.iam.ecs_task_role_arn
+  ecr_repository_url          = module.ecr.repository_url
+}
