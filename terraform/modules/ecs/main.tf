@@ -12,20 +12,6 @@ module "ecs_cluster" {
     }
   ]
 
-  # Allocate Fargate capacity providers to the cluster
-  cluster_capacity_providers = ["FARGATE", "FARGATE_SPOT"]
-
-  # Define the default strategy for distributed scaling
-  default_capacity_provider_strategy = {
-    FARGATE = {
-      weight = 50
-      base   = 1 # Keep at least 1 reliable task running on standard Fargate
-    }
-    FARGATE_SPOT = {
-      weight = 50 # Distribute remaining tasks evenly to save costs
-    }
-  }
-
   tags = {
     Environment = "Production"
     ManagedBy   = "Terraform"
