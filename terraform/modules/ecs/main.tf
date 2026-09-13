@@ -2,10 +2,10 @@ module "ecs_cluster" {
   source  = "terraform-aws-modules/ecs/aws//modules/cluster"
   version = "~> 6.0" # Always pin to a major version to prevent breaking changes
 
-  cluster_name = "aws-devops-ecs-cluster"
+  name = "aws-devops-ecs-cluster"
 
   # Enable CloudWatch Container Insights for cluster metrics
-  cluster_settings = [
+  setting = [
     {
       name  = "containerInsights"
       value = "enabled"
