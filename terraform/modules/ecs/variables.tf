@@ -9,3 +9,8 @@ variable "ecs_task_role_arn" {
 variable "ecr_repository_url" {
   type = string
 }
+
+variable "subnet_ids" {
+  description = "Subnet IDs for ECS tasks"
+  type        = list(string)
+}

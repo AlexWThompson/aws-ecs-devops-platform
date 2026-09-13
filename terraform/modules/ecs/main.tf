@@ -33,6 +33,8 @@ module "ecs_service" {
   task_exec_iam_role_arn = var.ecs_task_execution_role_arn
   tasks_iam_role_arn     = var.ecs_task_role_arn
 
+  subnet_ids = var.subnet_ids
+
   container_definitions = {
     dashboard = {
       image = var.ecr_repository_url
