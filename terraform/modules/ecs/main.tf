@@ -31,7 +31,7 @@ module "ecs_service" {
   memory = 512
 
   task_exec_iam_role_arn = var.ecs_task_execution_role_arn
-  task_iam_role_arn      = var.ecs_task_role_arn
+  tasks_iam_role_arn     = var.ecs_task_role_arn
 
   container_definitions = {
     dashboard = {
