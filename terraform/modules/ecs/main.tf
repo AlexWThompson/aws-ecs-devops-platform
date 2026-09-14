@@ -44,11 +44,18 @@ module "ecs_service" {
 
       port_mappings = [
         {
-          containerPort = 80
+          containerPort = 8080
+          hostPort      = 8080
           protocol      = "tcp"
         }
       ]
     }
+  }
+
+  load_balancer {
+    target_group_arn = var.target_group_arn
+    container_name   = "dashboard"
+    container_port   = 8080
   }
 
   tags = {
