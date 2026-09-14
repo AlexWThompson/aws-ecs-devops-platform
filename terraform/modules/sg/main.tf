@@ -8,7 +8,7 @@ module "security_group" {
     http = {
       from_port       = 8080
       ip_protocol     = "tcp"
-      referenced_security_group_id = security_group_alb.id
+      referenced_security_group_id = module.security_group_alb.id
       description     = "HTTPS from internal"
     }
     self-all = {
