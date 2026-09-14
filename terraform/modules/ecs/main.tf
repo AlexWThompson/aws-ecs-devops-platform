@@ -52,14 +52,14 @@ module "ecs_service" {
     }
   }
 
-  load_balancer {
+  load_balancer = {
     target_group_arn = var.target_group_arn
-    container_name   = "dashboard"
+    container_name   = "ecs-dashboard"
     container_port   = 8080
   }
 
   tags = {
-    Environment = "Production"
+    Environment = "prod"
     ManagedBy   = "Terraform"
   }
 }
