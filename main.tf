@@ -14,6 +14,12 @@ module "vpc" {
   source = "./terraform/modules/vpc"
 }
 
+module "sg" {
+  source = "./terraform/modules/sg"
+
+  vpc_id = module.vpc.vpc_id
+}
+
 module "iam" {
   source = "./terraform/modules/iam"
 }
@@ -31,10 +37,4 @@ module "ecs" {
 
   security_group_ids = module.sg.ecs_security_group_id
   subnet_ids         = module.vpc.private_subnets
-}
-
-module "sg" {
-  source = "./terraform/modules/sg"
-
-  vpc_id = module.vpc.vpc_id
 }
