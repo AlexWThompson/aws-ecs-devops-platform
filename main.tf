@@ -30,6 +30,9 @@ module "ecr" {
 
 module "alb" {
   source = "./terraform/modules/alb"
+
+  vpc_id     = module.vpc.vpc_id
+  subnet_ids = module.vpc.private_subnets
 }
 
 module "ecs" {
