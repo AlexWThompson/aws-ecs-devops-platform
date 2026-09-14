@@ -56,23 +56,6 @@ jobs:
     - name: Verify AWS Identity
       run: aws sts get-caller-identity
 
-    - name: Get ECR repository name
-      id: ecr
-      run: echo "repository=$(terraform output -raw ecr_repository_name)" >> "$GITHUB_OUTPUT"
-
-    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v2
-
-    - name: Build Docker image
-      env:
-        REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        REPOSITORY: ${{ steps.ecr.outputs.repository }}
-        IMAGE_TAG: ${{ github.sha }}
-      run: |
-        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-        docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
-
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v4
       with:
@@ -99,3 +82,20 @@ jobs:
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false -var="image_tag=${{ github.sha }}"
+
+    - name: Get ECR repository name
+      id: ecr
+      run: echo "repository=$(terraform output -raw ecr_repository_name)" >> "$GITHUB_OUTPUT"
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v2
+
+    - name: Build Docker image
+      env:
+        REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        REPOSITORY: ${{ steps.ecr.outputs.repository }}
+        IMAGE_TAG: ${{ github.sha }}
+      run: |
+        docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+        docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
