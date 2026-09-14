@@ -83,6 +83,10 @@ jobs:
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve -input=false
 
+    - name: Get ECR repository name
+      id: ecr
+      run: echo "repository=$(terraform output -raw ecr_repository_name)" >> "$GITHUB_OUTPUT"
+
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v2
@@ -90,7 +94,7 @@ jobs:
     - name: Build Docker image
       env:
         REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        REPOSITORY: ecs-dashboard
+        REPOSITORY: ${{ steps.ecr.outputs.repository }}
         IMAGE_TAG: ${{ github.sha }}
       run: |
         docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
