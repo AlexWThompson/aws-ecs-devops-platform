@@ -21,6 +21,7 @@ module "security_group" {
   egress_rules = {
     all = {
       ip_protocol = "TCP"
+      from_port   = 443
       to_port     = 443
       cidr_ipv4   = "0.0.0.0/0"
     }
