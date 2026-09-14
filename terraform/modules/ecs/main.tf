@@ -53,17 +53,10 @@ module "ecs_service" {
   }
 
   load_balancer = {
-    target_group_arn = var.target_group_arn
-
-    container_name = {
-        name = "ecs-dashboard"
-    }
-
-    container_port = {
-        port     = 8080
-        protocol = "tcp"
-    }
-  }
+  target_group_arn = var.target_group_arn
+  container_name   = "ecs-dashboard"
+  container_port   = 8080
+}
 
   tags = {
     Environment = "prod"
