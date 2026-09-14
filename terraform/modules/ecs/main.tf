@@ -38,7 +38,7 @@ module "ecs_service" {
 
   container_definitions = {
     ecs-dashboard = {
-      image = var.ecr_repository_url
+      image = "${var.ecr_repository_url}:${var.image_tag}"
 
       essential = true
 

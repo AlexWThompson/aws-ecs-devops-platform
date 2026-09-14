@@ -19,3 +19,8 @@ variable "security_group_ids" {
   description = "Security groups to attach to the ECS service"
   type        = list(string)
 }
+
+variable "image_tag" {
+  description = "Docker image tag"
+  type        = string
+}
