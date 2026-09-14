@@ -14,3 +14,8 @@ variable "subnet_ids" {
   description = "Subnet IDs for ECS tasks"
   type        = list(string)
 }
+
+variable "security_group_ids" {
+  description = "Security groups to attach to the ECS service"
+  type        = list(string)
+}
