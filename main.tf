@@ -28,6 +28,10 @@ module "ecr" {
   source = "./terraform/modules/ecr"
 }
 
+module "alb" {
+  source = "./terraform/modules/alb"
+}
+
 module "ecs" {
   source = "./terraform/modules/ecs"
 
