@@ -17,5 +17,5 @@ variable "subnet_ids" {
 
 variable "security_group_ids" {
   description = "Security groups to attach to the ECS service"
-  type        = list(string)
+  type        = string
 }
