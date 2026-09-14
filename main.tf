@@ -34,6 +34,7 @@ module "ecs" {
 }
 
 module "sg" {
-
+  source = "./terraform/modules/sg"
+  
   vpc_id = module.vpc.vpc_id
 }
