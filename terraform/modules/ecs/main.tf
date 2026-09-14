@@ -42,7 +42,7 @@ module "ecs_service" {
 
       essential = true
 
-      portmappings = [
+      portMappings = [
         {
           containerPort = 8080
           hostPort      = 8080
