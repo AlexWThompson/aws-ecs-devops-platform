@@ -24,3 +24,7 @@ variable "image_tag" {
   description = "Docker image tag"
   type        = string
 }
+
+variable "target_group_arn" {
+  type        = string
+}
