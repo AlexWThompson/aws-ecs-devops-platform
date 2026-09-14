@@ -27,6 +27,8 @@ module "alb" {
       port             = 8080
       target_type      = "ip"
 
+      create_attachment = false
+
       health_check = {
         enabled  = true
         protocol = "HTTP"
