@@ -7,7 +7,7 @@ module "alb" {
   subnets            = var.subnet_ids
 
   access_logs = {
-    bucket = "my-alb-logs"
+    bucket = "aws-devops-alb-logs"
   }
 
   listeners = {

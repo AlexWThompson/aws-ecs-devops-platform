@@ -55,6 +55,8 @@ module "security_group_alb" {
   egress_rules = {
     all = {
       ip_protocol = "TCP"
+      from_port   = 8080
+      to_port     = 8080
       cidr_ipv4   = "0.0.0.0/0"
     }
   }
