@@ -29,8 +29,8 @@ module "ecs" {
   ecs_task_role_arn           = module.iam.ecs_task_role_arn
   ecr_repository_url          = module.ecr.ecr_repository_url
 
-  security_group_ids    = module.sg.ecs_security_group_id
-  subnet_ids            = module.vpc.private_subnets
+  security_group_ids = module.sg.ecs_security_group_id
+  subnet_ids         = module.vpc.private_subnets
 }
 
 module "sg" {
