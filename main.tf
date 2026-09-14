@@ -30,11 +30,11 @@ module "ecs" {
   ecr_repository_url          = module.ecr.ecr_repository_url
 
   ecs_security_group_id = module.sg.ecs_security_group_id
-  subnet_ids = module.vpc.private_subnets
+  subnet_ids            = module.vpc.private_subnets
 }
 
 module "sg" {
   source = "./terraform/modules/sg"
-  
+
   vpc_id = module.vpc.vpc_id
 }
