@@ -33,6 +33,7 @@ module "ecs_service" {
   task_exec_iam_role_arn = var.ecs_task_execution_role_arn
   tasks_iam_role_arn     = var.ecs_task_role_arn
 
+  ecs_security_group = var.ecs_security_group_id
   subnet_ids = var.subnet_ids
 
   container_definitions = {
