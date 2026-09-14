@@ -2,6 +2,11 @@ module "ecr" {
   source = "terraform-aws-modules/ecr/aws"
 
   repository_name = "aws-devops-ecs-repo"
+  image_tag_mutability = "IMMUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
 
   repository_read_write_access_arns = ["arn:aws:iam::527557824388:role/GitubActions-S3_role"]
   repository_lifecycle_policy = jsonencode({

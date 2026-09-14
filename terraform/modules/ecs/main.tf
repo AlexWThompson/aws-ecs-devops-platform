@@ -36,7 +36,7 @@ module "ecs_service" {
   subnet_ids = var.subnet_ids
 
   container_definitions = {
-    dashboard = {
+    ecs-dashboard = {
       image = var.ecr_repository_url
 
       essential = true
