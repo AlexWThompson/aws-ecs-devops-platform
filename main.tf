@@ -28,13 +28,6 @@ module "ecr" {
   source = "./terraform/modules/ecr"
 }
 
-module "alb" {
-  source = "./terraform/modules/alb"
-
-  vpc_id     = module.vpc.vpc_id
-  subnet_ids = module.vpc.public_subnets
-}
-
 module "ecs" {
   source = "./terraform/modules/ecs"
 
@@ -47,3 +40,11 @@ module "ecs" {
   security_group_ids = [module.sg.ecs_security_group_id]
   subnet_ids         = module.vpc.private_subnets
 }
+
+module "alb" {
+  source = "./terraform/modules/alb"
+
+  vpc_id     = module.vpc.vpc_id
+  subnet_ids = module.vpc.public_subnets
+}
+

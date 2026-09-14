@@ -6,10 +6,6 @@ module "alb" {
   vpc_id             = var.vpc_id
   subnets            = var.subnet_ids
 
-  access_logs = {
-    bucket = "aws-devops-alb-logs"
-  }
-
   listeners = {
     http = {
       port     = 80
