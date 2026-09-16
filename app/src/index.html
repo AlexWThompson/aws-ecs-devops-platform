@@ -1,138 +1,251 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AWS DevOps Infrastructure Dashboard</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+```
+<style>
+    * {
+        box-sizing: border-box;
+    }
 
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f3f4f6;
-            color: #1f2937;
-        }
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f3f4f6;
+        color: #1f2937;
+    }
 
+    /* Header */
+    .header {
+        background: #111827;
+        color: white;
+        padding: 24px 40px;
+        border-bottom: 4px solid #f59e0b;
+    }
+
+    .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .header h1 {
+        margin: 0;
+        font-size: 28px;
+    }
+
+    .header p {
+        margin: 8px 0 0;
+        color: #9ca3af;
+        font-size: 14px;
+    }
+
+    /* Main container */
+    .container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    /* Dashboard heading */
+    .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+    }
+
+    .dashboard-header h2 {
+        margin: 0;
+        font-size: 22px;
+    }
+
+    .dashboard-header span {
+        font-size: 13px;
+        color: #6b7280;
+    }
+
+    /* Status banner */
+    .status-banner {
+        background: white;
+        border: 1px solid #d1d5db;
+        border-radius: 10px;
+        padding: 20px 24px;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .status-info {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .status-dot {
+        width: 12px;
+        height: 12px;
+        background: #22c55e;
+        border-radius: 50%;
+    }
+
+    .status-text strong {
+        display: block;
+        font-size: 16px;
+    }
+
+    .status-text span {
+        display: block;
+        margin-top: 4px;
+        color: #6b7280;
+        font-size: 13px;
+    }
+
+    .healthy {
+        color: #16a34a;
+        font-weight: bold;
+    }
+
+    /* Cards */
+    .info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .card {
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 24px;
+    }
+
+    .card:hover {
+        border-color: #9ca3af;
+    }
+
+    .label {
+        font-size: 12px;
+        color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 10px;
+    }
+
+    .value {
+        font-size: 22px;
+        font-weight: bold;
+        color: #111827;
+    }
+
+    /* Footer */
+    .footer {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+        color: #9ca3af;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
         .header {
-            background: #111827;
-            color: white;
-            padding: 24px 40px;
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 28px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .dashboard {
-            background: white;
-            border-radius: 12px;
-            padding: 35px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .dashboard h2 {
-            margin-top: 0;
-            margin-bottom: 30px;
-        }
-
-        .info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .card {
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
             padding: 20px;
         }
 
-        .label {
-            font-size: 13px;
-            color: #6b7280;
-            text-transform: uppercase;
-            margin-bottom: 8px;
+        .header h1 {
+            font-size: 22px;
         }
 
-        .value {
-            font-size: 20px;
-            font-weight: bold;
+        .container {
+            margin-top: 25px;
         }
 
-        .healthy {
-            color: #16a34a;
+        .dashboard-header {
+            display: block;
         }
 
-        .status {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        .dashboard-header span {
+            display: block;
+            margin-top: 6px;
         }
 
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            background: #22c55e;
-            border-radius: 50%;
+        .status-banner {
+            align-items: flex-start;
         }
 
         .info {
             grid-template-columns: 1fr;
         }
-    </style>
-
-    <header class="header">
-    <main class="container">
-        <section class="dashboard">
-            <div class="info">
-
-                <div class="card">
-                    <div class="label">Application</div>
-                    <div class="value">ECS Dashboard</div>
-                </div>
-                    <div class="value">1.0.0</div>
-                </div>
-
-                <div class="card">
-                    <div class="label">Environment</div>
-                    <div class="value">Development</div>
-                </div>
-
-                <div class="card">
-                        Healthy
-                    </div>
-                </div>
-
-            </div>
-
-        </section>
-    </main>
-
-</body>
-</html>                    <div class="label">Status</div>
-                    <div class="value healthy status">
-                        <span class="status-dot"></span>
-
-                <div class="card">
-                    <div class="label">Version</div>
-
-            <h2>Application Status</h2>
-
-        <h1>AWS DevOps Infrastructure Dashboard</h1>
-    </header>
+    }
+</style>
+```
 
 </head>
 
 <body>
 
+```
+<header class="header">
+    <div class="header-content">
+        <h1>AWS DevOps Infrastructure Dashboard</h1>
+        <p>Containerized application running on Amazon ECS</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="dashboard-header">
+        <h2>Application Status</h2>
+        <span>Infrastructure Overview</span>
+    </div>
+
+    <section class="status-banner">
+        <div class="status-info">
+            <span class="status-dot"></span>
+
+            <div class="status-text">
+                <strong class="healthy">System Healthy</strong>
+                <span>The ECS application is currently operational.</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="info">
+
+        <div class="card">
+            <div class="label">Application</div>
+            <div class="value">ECS Dashboard</div>
+        </div>
+
+        <div class="card">
+            <div class="label">Version</div>
+            <div class="value">1.0.0</div>
+        </div>
+
+        <div class="card">
+            <div class="label">Environment</div>
+            <div class="value">Development</div>
+        </div>
+
+        <div class="card">
+            <div class="label">Platform</div>
+            <div class="value">Amazon ECS</div>
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    AWS DevOps Infrastructure Dashboard &mdash; Version 1.0.0
+</footer>
+```
+
+</body>
+</html>
