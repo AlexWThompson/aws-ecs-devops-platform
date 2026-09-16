@@ -52,6 +52,10 @@ module "ecs_service" {
     }
   }
 
+  autoscaling_min_capacity = 2
+  autoscaling_max_capacity = 6
+  autoscaling_cpu_target = 70
+
   load_balancer = {
   service = {
     target_group_arn = var.target_group_arn
