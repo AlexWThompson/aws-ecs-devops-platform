@@ -7,7 +7,7 @@ VERSION = os.getenv("APP_VERSION", "dev")
 
 @app.route("/")
 def dashboard():
-    return render_template("index.html")
+    return render_template("index.html", version=VERSION)
 
 @app.route("/health")
 def health():
