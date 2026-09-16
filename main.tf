@@ -39,10 +39,6 @@ module "ecs" {
 
   security_group_ids = [module.sg.ecs_security_group_id]
   subnet_ids         = module.vpc.private_subnets
-
-  autoscaling_min_capacity = 2
-  autoscaling_max_capacity = 6
-  autoscaling_cpu_target   = 70
 }
 
 module "alb" {

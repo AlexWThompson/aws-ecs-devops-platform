@@ -28,21 +28,3 @@ variable "image_tag" {
 variable "target_group_arn" {
   type        = string
 }
-
-variable "autoscaling_min_capacity" {
-  description = "Minimum number of ECS tasks"
-  type        = number
-  default     = 2
-}
-
-variable "autoscaling_max_capacity" {
-  description = "Maximum number of ECS tasks"
-  type        = number
-  default     = 6
-}
-
-variable "autoscaling_cpu_target" {
-  description = "Target average CPU utilization for ECS service"
-  type        = number
-  default     = 70
-}
