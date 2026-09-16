@@ -34,6 +34,8 @@ module "alb" {
     }
   }
 
+  security_groups = [var.security_groups]
+
   tags = {
     Terraform   = "true"
     Environment = "prod"

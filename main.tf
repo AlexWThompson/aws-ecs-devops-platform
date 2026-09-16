@@ -44,7 +44,8 @@ module "ecs" {
 module "alb" {
   source = "./terraform/modules/alb"
 
-  vpc_id     = module.vpc.vpc_id
-  subnet_ids = module.vpc.public_subnets
+  vpc_id          = module.vpc.vpc_id
+  subnet_ids      = module.vpc.public_subnets
+  security_groups = module.sg.alb_security_group_id
 }
 
