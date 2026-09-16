@@ -20,5 +20,5 @@ module "ecs_alarm" {
   }
   
 
-  alarm_actions = ["arn:aws:sns:eu-west-1:835367859852:my-sns-queue"]
+  alarm_actions = []
 }
