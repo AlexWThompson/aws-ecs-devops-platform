@@ -50,3 +50,10 @@ module "alb" {
   security_groups = module.sg.alb_security_group_id
 }
 
+module "monitoring" {
+  source = "./terraform/modules/monitoring"
+
+  ecs_cluster_name = module.ecs.ecs_cluster_name
+  ecs_service_name = module.ecs.ecs_service_name
+}
+
