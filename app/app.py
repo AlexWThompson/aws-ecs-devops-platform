@@ -13,6 +13,19 @@ def dashboard():
 def health():
     return {"status": "healthy"}, 200
 
+@app.route("/cpu-test")
+def cpu_test():
+    import time
+    from flask import request
+
+    seconds = int(request.args.get("seconds", 30))
+    end = time.time() + seconds
+
+    while time.time() < end:
+        pass
+
+    return {"status": "completed", "seconds": seconds}, 200
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
 
