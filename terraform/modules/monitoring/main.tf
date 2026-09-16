@@ -45,7 +45,7 @@ module "ecs_mem_alarm" {
   }
   
 
-  alarm_actions = [module.sns_email_topic.arn]
+  alarm_actions = [module.sns_email_topic.topic_id]
 }
 
 module "sns_email_topic" {
