@@ -5,7 +5,7 @@ module "ecs_cpu_alarm" {
   alarm_name          = "ecs_task_CPU_alarm"
   alarm_description   = "ecs task has > 80% CPU load"
   comparison_operator = "GreaterThanThreshold"
-  evaluation_periods  = 2
+  evaluation_periods  = 1
   threshold           = 80
   period              = 300
   unit                = "Percent"
@@ -30,7 +30,7 @@ module "ecs_mem_alarm" {
   alarm_name          = "ecs_task_Mem_alarm"
   alarm_description   = "ecs task has > 80% Mem load"
   comparison_operator = "GreaterThanThreshold"
-  evaluation_periods  = 2
+  evaluation_periods  = 1
   threshold           = 80
   period              = 300
   unit                = "Percent"
