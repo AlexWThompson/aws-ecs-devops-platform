@@ -75,7 +75,7 @@ resource "aws_appautoscaling_target" "ecs" {
 }
 
 resource "aws_appautoscaling_policy" "cpu" {
-  name               = "${var.service_name}-cpu-scaling"
+  name               = "${module.ecs_service.name}-cpu-scaling"
   policy_type        = "TargetTrackingScaling"
 
   resource_id        = aws_appautoscaling_target.ecs.resource_id
