@@ -2,6 +2,8 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
+VERSION = os.getenv("APP_VERSION", "dev")
+
 @app.route("/")
 def dashboard():
     return render_template("index.html")

@@ -28,3 +28,8 @@ variable "image_tag" {
 variable "target_group_arn" {
   type        = string
 }
+
+variable "app_version" {
+  type    = string
+  default = "dev"
+}

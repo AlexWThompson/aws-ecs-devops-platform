@@ -42,6 +42,13 @@ module "ecs_service" {
 
       essential = true
 
+      environment = [
+      {
+        name  = "APP_VERSION"
+        value = var.app_version
+      }
+    ]
+
       portMappings = [
         {
           containerPort = 8080
