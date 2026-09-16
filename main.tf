@@ -36,7 +36,7 @@ module "ecs" {
   ecr_repository_url          = module.ecr.ecr_repository_url
   image_tag                   = var.image_tag
   target_group_arn            = module.alb.target_group_arn
-  app_version                 = var.app_version 
+  app_version                 = var.app_version
 
   security_group_ids = [module.sg.ecs_security_group_id]
   subnet_ids         = module.vpc.private_subnets
