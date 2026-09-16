@@ -20,7 +20,7 @@ module "ecs_cpu_alarm" {
   }
   
 
-  alarm_actions = []
+  alarm_actions = [module.sns_email_topic.topic_id]
 }
 
 module "ecs_mem_alarm" {
